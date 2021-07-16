@@ -146,7 +146,7 @@ class MirrorListener(listeners.MirrorListeners):
     def onUploadComplete(self, link: str, size):
         with download_dict_lock:
             msg = f'<b>☞ 📂 File Name :</b> <code>{download_dict[self.uid].name()}</code>\n\n<b>☞ 📦 Total Size : </b><code>{size}</code>'
-            //buttons = button_build.ButtonMaker()//
+            #buttons = button_build.ButtonMaker()
            if SHORTENER is not None and SHORTENER_API is not None:
                 surl = requests.get('https://{}/api?api={}&url={}&format=text'.format(SHORTENER, SHORTENER_API, link)).text
                 buttons.buildbutton("💽 𝗚-𝗗𝗥𝗜𝗩𝗘 𝗟𝗜𝗡𝗞 💽", surl)
@@ -159,9 +159,9 @@ class MirrorListener(listeners.MirrorListeners):
                     share_url += '/'
                 if SHORTENER is not None and SHORTENER_API is not None:
                     siurl = requests.get('https://{}/api?api={}&url={}&format=text'.format(SHORTENER, SHORTENER_API, share_url)).text
-                    buttons.buildbutton("☄️ 𝗗𝗜𝗥𝗘𝗖𝗧 𝗟𝗜𝗡𝗞 ☄️", siurl)
+                    buttons.buildbutton("🔗 𝗗𝗜𝗥𝗘𝗖𝗧 𝗟𝗜𝗡𝗞 🔗", siurl)
                 else:
-                    buttons.buildbutton("☄️ 𝗗𝗜𝗥𝗘𝗖𝗧 𝗟𝗜𝗡𝗞 ☄️", share_url)
+                    buttons.buildbutton("🔗 𝗗𝗜𝗥𝗘𝗖𝗧 𝗟𝗜𝗡𝗞 🔗", share_url)
             if BUTTON_THREE_NAME is not None and BUTTON_THREE_URL is not None:
                 buttons.buildbutton(f"{BUTTON_THREE_NAME}", f"{BUTTON_THREE_URL}")
             if BUTTON_FOUR_NAME is not None and BUTTON_FOUR_URL is not None:
