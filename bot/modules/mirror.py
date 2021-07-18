@@ -147,7 +147,7 @@ class MirrorListener(listeners.MirrorListeners):
         with download_dict_lock:
             msg = f'<b>☞ 📂 File Name :</b> <code>{download_dict[self.uid].name()}</code>\n\n<b>☞ 📦 Total Size : </b><code>{size}</code>'
             buttons = button_build.ButtonMaker()
-           if SHORTENER is not None and SHORTENER_API is not None:
+            if SHORTENER is not None and SHORTENER_API is not None:
                 surl = requests.get('https://{}/api?api={}&url={}&format=text'.format(SHORTENER, SHORTENER_API, link)).text
                 buttons.buildbutton("🖴 𝗚-𝗗𝗥𝗜𝗩𝗘 𝗟𝗜𝗡𝗞 🖴", surl)
             else:
