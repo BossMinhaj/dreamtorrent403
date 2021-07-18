@@ -173,7 +173,7 @@ class MirrorListener(listeners.MirrorListeners):
             else:
                 uname = f'<a href="tg://user?id={self.message.from_user.id}">{self.message.from_user.first_name}</a>'
             if uname is not None:
-                msg += f'\n\n<b>☞ 🚶 Uploader :</b> {uname}\n\n<b>#Uploaded To DreamCloud ✅</b>\n\n<b>➩ ⚡ 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗕𝘆 @Dream_Bots404</b>\n\n<b>⚠ 𝗗𝗢 𝗡𝗢𝗧 <u>𝗦𝗛𝗔𝗥𝗘</u> 𝗜𝗡𝗗𝗘𝗫 𝗟𝗜𝗡𝗞 𝗣𝗨𝗕𝗟𝗜𝗖𝗟𝗬  ⚠</b>'
+                msg += f'\n\n<b>☞ 🚶 Uploader :</b> {uname}\n\n<b>#Uploaded To DreamCloud ✅</b>\n\n<b>➩ ⚡ 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗕𝘆 @Dream_Bots404</b>\n\n<b>⚠ 𝗗𝗢 𝗡𝗢𝗧 <u>𝗦𝗛𝗔𝗥𝗘</u> 𝗟𝗜𝗡𝗞 𝗣𝗨𝗕𝗟𝗜𝗖𝗟𝗬  ⚠</b>'
             try:
                 fs_utils.clean_download(download_dict[self.uid].path())
             except FileNotFoundError:
@@ -268,7 +268,7 @@ def _mirror(bot, update, isTar=False, extract=False):
             sendMessage(f"<b>★ Mega.nz Link Added To 😎 /{BotCommands.StatusCommand}\n★ Only 1 Download At A Time Otherwise Ban.\n★ Do Not Forget To Read Mega Download Rules.</b>", bot, update)
     else:
         ariaDlManager.add_download(link, f'{DOWNLOAD_DIR}/{listener.uid}/', listener, name)
-        sendMessage(f"<b>★ Your URI Link Has Been Added To 😎 /{BotCommands.StatusCommand}\n★ Max Mirror Size Is <u>100GB</u> In This Group.\n★ Do Not Forget To Read Group Rules On Pinned Messages.⚠</b>", bot, update)
+        sendMessage(f"<b>★ Your URI Link Has Been Added To 😎 /{BotCommands.StatusCommand}\n★ Max Mirror Size Is <u>100GB</u> In This Group.\n★ Do Not Forget To Read DREAM CLOUD Group Rules On Pinned Messages.\n★ Join Discussion Group @Dream_Bots404.⚠</b>", bot, update)
     if len(Interval) == 0:
         Interval.append(setInterval(DOWNLOAD_STATUS_UPDATE_INTERVAL, update_all_messages))
 
