@@ -147,12 +147,12 @@ class MirrorListener(listeners.MirrorListeners):
         with download_dict_lock:
             msg = f'<b>☞ 📂 File Name :</b> <code>{download_dict[self.uid].name()}</code>\n\n<b>☞ 📦 Total Size : </b><code>{size}</code>'
             buttons = button_build.ButtonMaker()
-           #if SHORTENER is not None and SHORTENER_API is not None:
-                #surl = requests.get('https://{}/api?api={}&url={}&format=text'.format(SHORTENER, SHORTENER_API, link)).text
-                #buttons.buildbutton("💽 𝗚-𝗗𝗥𝗜𝗩𝗘 𝗟𝗜𝗡𝗞 💽", surl)
-            #else:
-                #buttons.buildbutton("💽 𝗚-𝗗𝗥𝗜𝗩𝗘 𝗟𝗜𝗡𝗞 💽", link)
-            #LOGGER.info(f'Done Uploading {download_dict[self.uid].name()}')
+           if SHORTENER is not None and SHORTENER_API is not None:
+                surl = requests.get('https://{}/api?api={}&url={}&format=text'.format(SHORTENER, SHORTENER_API, link)).text
+                buttons.buildbutton("🖴 𝗚-𝗗𝗥𝗜𝗩𝗘 𝗟𝗜𝗡𝗞 🖴", surl)
+            else:
+                buttons.buildbutton("🖴 𝗚-𝗗𝗥𝗜𝗩𝗘 𝗟𝗜𝗡𝗞 🖴", link)
+            LOGGER.info(f'Done Uploading {download_dict[self.uid].name()}')
             if INDEX_URL is not None:
                 share_url = requests.utils.requote_uri(f'{INDEX_URL}/{download_dict[self.uid].name()}')
                 if os.path.isdir(f'{DOWNLOAD_DIR}/{self.uid}/{download_dict[self.uid].name()}'):
@@ -239,7 +239,7 @@ def _mirror(bot, update, isTar=False, extract=False):
                     listener = MirrorListener(bot, update, pswd, isTar, tag, extract)
                     tg_downloader = TelegramDownloadHelper(listener)
                     tg_downloader.add_download(reply_to, f'{DOWNLOAD_DIR}{listener.uid}/', name)
-                    sendMessage(f"<b>★ Your Telegram File Has Been Added To Download Queue.\n★ Check Status By Clicking</b> /{BotCommands.StatusCommand}", bot, update)
+                    sendMessage(f"<b>★ Your Telegram File Has Been Added To Download Queue.\n★ Check Status By Clicking.\n★ Join Discussion Group @Dream_Bots404.</b> /{BotCommands.StatusCommand}", bot, update)
                     if len(Interval) == 0:
                         Interval.append(setInterval(DOWNLOAD_STATUS_UPDATE_INTERVAL, update_all_messages))
                     return
@@ -265,7 +265,7 @@ def _mirror(bot, update, isTar=False, extract=False):
         else:
             mega_dl = MegaDownloadHelper()
             mega_dl.add_download(link, f'{DOWNLOAD_DIR}/{listener.uid}/', listener)
-            sendMessage(f"<b>★ Mega.nz Link Added To 😎 /{BotCommands.StatusCommand}\n★ Only 1 Download At A Time Otherwise Ban.\n★ Do Not Forget To Read Mega Download Rules.</b>", bot, update)
+            sendMessage(f"<b>★ Mega.nz Link Added To 😎 /{BotCommands.StatusCommand}\n★ Only 1 Download At A Time Otherwise Ban.\n★ Do Not Forget To Read Mega Download Rules.\n★ Join Discussion Group @Dream_Bots404.</b>", bot, update)
     else:
         ariaDlManager.add_download(link, f'{DOWNLOAD_DIR}/{listener.uid}/', listener, name)
         sendMessage(f"<b>★ Your URI Link Has Been Added To 😎 /{BotCommands.StatusCommand}\n★ Max Mirror Size Is <u>100GB</u> In This Group.\n★ Do Not Forget To Read DREAM CLOUD Group Rules On Pinned Messages.\n★ Join Discussion Group @Dream_Bots404.⚠</b>", bot, update)
