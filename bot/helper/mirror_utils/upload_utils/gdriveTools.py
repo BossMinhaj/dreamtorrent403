@@ -320,11 +320,11 @@ class GoogleDriveHelper:
                 msg += f'<b>➩ 🌀 Folder Name :</b> <code>{meta.get("name")}</code>\n\n<b>➩ 💾 Total Size :</b> {get_readable_file_size(self.transferred_size)}\n\n<b>#Folder Cloned To DreamCloud ✅</b>\n\n<b>➩ 🗳 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗕𝘆 @Dream_Bots404</b>\n\n<b>⚠ 𝗗𝗢 𝗡𝗢𝗧 <u>𝗦𝗛𝗔𝗥𝗘</u> 𝗜𝗡𝗗𝗘𝗫 𝗟𝗜𝗡𝗞 𝗣𝗨𝗕𝗟𝗜𝗖𝗟𝗬 🅾🆃🅷🅴🆁🆆🅸🆂🅴 🆈🅾🆄 🆆🅸🅻🅻 🅱🅴 🅱🅰🅽🅽🅴🅳 ⚠</b>'
                 durl = self.__G_DRIVE_DIR_BASE_DOWNLOAD_URL.format(dir_id)
                 buttons = button_build.ButtonMaker()
-                #if SHORTENER is not None and SHORTENER_API is not None:
-                 #   surl = requests.get('https://{}/api?api={}&url={}&format=text'.format(SHORTENER, SHORTENER_API, durl)).text
-                  #  buttons.buildbutton("💽 𝗚-𝗗𝗥𝗜𝗩𝗘 𝗟𝗜𝗡𝗞 💽", surl)
-                #else:
-                 #   buttons.buildbutton("💽 𝗚-𝗗𝗥𝗜𝗩𝗘 𝗟𝗜𝗡𝗞 💽", durl)
+                if SHORTENER is not None and SHORTENER_API is not None:
+                    surl = requests.get('https://{}/api?api={}&url={}&format=text'.format(SHORTENER, SHORTENER_API, durl)).text
+                    buttons.buildbutton("🖴 𝗚-𝗗𝗥𝗜𝗩𝗘 𝗟𝗜𝗡𝗞 🖴", surl)
+                else:
+                    buttons.buildbutton("🖴 𝗚-𝗗𝗥𝗜𝗩𝗘 𝗟𝗜𝗡𝗞 🖴", durl)
                 if INDEX_URL is not None:
                     url = requests.utils.requote_uri(f'{INDEX_URL}/{meta.get("name")}/')
                     if SHORTENER is not None and SHORTENER_API is not None:
@@ -343,11 +343,11 @@ class GoogleDriveHelper:
                 msg += f'<b>➩ 🌀 File Name :</b> <code>{file.get("name")}</code>'
                 durl = self.__G_DRIVE_BASE_DOWNLOAD_URL.format(file.get("id"))
                 buttons = button_build.ButtonMaker()
-               # if SHORTENER is not None and SHORTENER_API is not None:
-                  #  surl = requests.get('https://{}/api?api={}&url={}&format=text'.format(SHORTENER, SHORTENER_API, durl)).text
-                   # buttons.buildbutton("💽 𝗚-𝗗𝗥𝗜𝗩𝗘 𝗟𝗜𝗡𝗞 💽", surl)
-               # else:
-               #     buttons.buildbutton("💽 𝗚-𝗗𝗥𝗜𝗩𝗘 𝗟𝗜𝗡𝗞 💽", durl)
+                if SHORTENER is not None and SHORTENER_API is not None:
+                    surl = requests.get('https://{}/api?api={}&url={}&format=text'.format(SHORTENER, SHORTENER_API, durl)).text
+                    buttons.buildbutton("🖴 𝗚-𝗗𝗥𝗜𝗩𝗘 𝗟𝗜𝗡𝗞 🖴", surl)
+                else:
+                    buttons.buildbutton("🖴 𝗚-𝗗𝗥𝗜𝗩𝗘 𝗟𝗜𝗡𝗞 🖴", durl)
                 try:
                     msg += f'\n\n<b>➩ 💾 Total Size :</b> <code>{get_readable_file_size(int(meta.get("size")))}</code>\n\n<b>#File Cloned To DreamCloud ✅</b>\n\n<b>➩ 🗳 𝗣𝗼𝘄𝗲𝗿𝗲𝗱 𝗕𝘆 @Dream_Bots404</b>\n\n<b>⚠ 𝗗𝗢 𝗡𝗢𝗧 <u>𝗦𝗛𝗔𝗥𝗘</u> 𝗜𝗡𝗗𝗘𝗫 𝗟𝗜𝗡𝗞 𝗣𝗨𝗕𝗟𝗜𝗖𝗟𝗬 🅾🆃🅷🅴🆁🆆🅸🆂🅴 🆈🅾🆄 🆆🅸🅻🅻 🅱🅴 🅱🅰🅽🅽🅴🅳 ⚠</b>'
                 except TypeError:
@@ -511,12 +511,12 @@ class GoogleDriveHelper:
                             'mimeType') == "application/vnd.google-apps.folder":  # Detect Whether Current Entity is a Folder or File.
                         furl = f"https://drive.google.com/drive/folders/{file.get('id')}"
                         msg += f"⁍<code>{file.get('name')}<br>(folder📁)</code><br>"
-                        #if SHORTENER is not None and SHORTENER_API is not None:
-                           # sfurl = requests.get(
-                               # 'https://{}/api?api={}&url={}&format=text'.format(SHORTENER, SHORTENER_API, furl)).text
-                         #   msg += f"<b><a href={sfurl}>💽 𝗚-𝗗𝗥𝗜𝗩𝗘 𝗟𝗜𝗡𝗞 💽</a></b>"
-                        #else:
-                           # msg += f"<b><a href={furl}>💽 𝗚-𝗗𝗥𝗜𝗩𝗘 𝗟𝗜𝗡𝗞 💽</a></b>"
+                        if SHORTENER is not None and SHORTENER_API is not None:
+                            sfurl = requests.get(
+                                'https://{}/api?api={}&url={}&format=text'.format(SHORTENER, SHORTENER_API, furl)).text
+                            msg += f"<b><a href={sfurl}>🖴 𝗚-𝗗𝗥𝗜𝗩𝗘 𝗟𝗜𝗡𝗞 🖴</a></b>"
+                        else:
+                            msg += f"<b><a href={furl}>🖴 𝗚-𝗗𝗥𝗜𝗩𝗘 𝗟𝗜𝗡𝗞 🖴</a></b>"
                         if INDEX_URL is not None:
                             url = requests.utils.requote_uri(f'{INDEX_URL}/{file.get("name")}/')
                             if SHORTENER is not None and SHORTENER_API is not None:
@@ -529,12 +529,12 @@ class GoogleDriveHelper:
                     else:
                         furl = f"https://drive.google.com/uc?id={file.get('id')}&export=download"
                         msg += f"⁍<code>{file.get('name')}<br>({get_readable_file_size(int(file.get('size')))})📄</code><br>"
-                        #if SHORTENER is not None and SHORTENER_API is not None:
-                            #sfurl = requests.get(
-                               # 'https://{}/api?api={}&url={}&format=text'.format(SHORTENER, SHORTENER_API, furl)).text
-                           # msg += f"<b><a href={sfurl}>💽 𝗚-𝗗𝗥𝗜𝗩𝗘 𝗟𝗜𝗡𝗞 💽</a></b>"
-                       # else:
-                            #msg += f"<b><a href={furl}>💽 𝗚-𝗗𝗥𝗜𝗩𝗘 𝗟𝗜𝗡𝗞 💽</a></b>"
+                        if SHORTENER is not None and SHORTENER_API is not None:
+                            sfurl = requests.get(
+                                'https://{}/api?api={}&url={}&format=text'.format(SHORTENER, SHORTENER_API, furl)).text
+                            msg += f"<b><a href={sfurl}>🖴 𝗚-𝗗𝗥𝗜𝗩𝗘 𝗟𝗜𝗡𝗞 🖴</a></b>"
+                        else:
+                            msg += f"<b><a href={furl}>🖴 𝗚-𝗗𝗥𝗜𝗩𝗘 𝗟𝗜𝗡𝗞 🖴</a></b>"
                         if INDEX_URL is not None:
                             url = requests.utils.requote_uri(f'{INDEX_URL}/{file.get("name")}')
                             if SHORTENER is not None and SHORTENER_API is not None:
